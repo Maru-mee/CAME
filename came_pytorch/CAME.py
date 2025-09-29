@@ -60,7 +60,7 @@ class CAME(torch.optim.Optimizer):
 
     def _approx_sq_grad(self, exp_avg_sq_row, exp_avg_sq_col):
         r_factor = (
-            (exp_avg_sq_row / exp_avg_sq_row.mean(dim=-1, keepdim=True))
+            (exp_avg_sq_row / exp_avg_sq_row.mean(dim=-1, keepdim=True).add_(self.param_groups[0]["eps"][1]))
             .rsqrt_()
             .unsqueeze(-1)
         )
