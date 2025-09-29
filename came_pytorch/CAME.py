@@ -102,8 +102,8 @@ class CAME(torch.optim.Optimizer):
                             grad_shape[:-2] + grad_shape[-1:]
                         ).type_as(grad)
 
-                        state["exp_avg_res_row"] = torch.zeros(grad_shape[:-1]).type_as(grad)
-                        state["exp_avg_res_col"] = torch.zeros(
+                        state["exp_avg_res_row"] = torch.ones(grad_shape[:-1]).type_as(grad)
+                        state["exp_avg_res_col"] = torch.ones(
                             grad_shape[:-2] + grad_shape[-1:]
                         ).type_as(grad)
                     else:
